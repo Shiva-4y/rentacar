@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // e.g., "Toyota Corolla"
+            $table->string('name'); 
             $table->string('plate_number')->unique();
-            $table->string('type'); // e.g., "Sedan", "SUV"
-            $table->decimal('rental_rate', 8, 2); // e.g., daily rate
-            $table->boolean('isAvailable')->default(true); // true = available, false = rented
+            $table->string('type'); 
+            $table->decimal('rental_rate', 8, 2); 
+            $table->boolean('isAvailable')->default(true); 
             $table->timestamps();
         });
     
