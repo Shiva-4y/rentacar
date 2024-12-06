@@ -5,7 +5,8 @@
     <span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Axell's Car Rental</span> Dashboard
 </h1>
 <p class="text-sm font-light text-gray-500 lg:text-base dark:text-gray-400">
-    Better Data Scalable AI. Here at Flowbite, we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.
+Empowering your rental business with real-time data insights and streamlined management tools. 
+Drive growth and efficiency with our innovative platform designed for optimal performance and customer satisfaction.
 </p>
 
 

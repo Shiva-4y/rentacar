@@ -10,7 +10,8 @@ use Livewire\WithoutUrlPagination;
 class Index extends Component
 {
    
-    use WithPagination, WithoutUrlPagination;   
+    use WithPagination, WithoutUrlPagination;  
+     
 
     public function render()
     {
