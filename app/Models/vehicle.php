@@ -15,7 +15,7 @@ class vehicle extends Model
 
     protected $table = 'vehicles';
 
-    protected $fillable = ['name', 'plate_number', 'type', 'rental_rate'];
+    protected $fillable = ['name', 'plate_number', 'type', 'rental_rate', 'isAvailable'];
 
     public function rentals()
     {
