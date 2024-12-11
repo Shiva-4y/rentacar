@@ -13,7 +13,8 @@ class Create extends Component
     public $rental_rate;
     public $isAvailable;
 
- 
+    public $vehicleTypes = ['Sedan', 'SUV', 'Truck', 'Van'];
+
     protected $rules = [
         'name' => 'required|string|max:255',
         'plate_number' => 'required|string|max:20',
@@ -52,6 +53,8 @@ class Create extends Component
 
     public function render()
     {
-        return view('livewire.car.create');
+        return view('livewire.car.create', [
+            'vehicleTypes' => $this->vehicleTypes, // Pass vehicle types to the view
+        ]);
     }
 }

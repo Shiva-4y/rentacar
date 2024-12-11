@@ -22,10 +22,15 @@
         </div>
 
         <div>
-            <label for="type" class="block text-sm font-medium">Vehicle Type</label>
-            <input type="text" id="type" wire:model="type" class="w-full px-4 py-2 border rounded">
-            @error('type') <p class="text-red-600">{{ $message }}</p> @enderror
-        </div>
+    <label for="type">Vehicle Type</label>
+    <select wire:model="type" id="type">
+        <option value="">Select a type</option>
+        @foreach ($vehicleTypes as $vehicleType)
+            <option value="{{ $vehicleType }}">{{ $vehicleType }}</option>
+        @endforeach
+    </select>
+    @error('type') <span class="error">{{ $message }}</span> @enderror
+</div>
 
         <div>
             <label for="rental_rate" class="block text-sm font-medium">Rental Rate</label>

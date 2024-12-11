@@ -1,44 +1,52 @@
-<div class="p-6 bg-white dark:bg-gray-800 shadow-md rounded-md">
-    <h2 class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">Edit Vehicle</h2>
+<div class="p-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg max-w-lg mx-auto">
+    <h1 class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">Edit Vehicle</h1>
+
+    @if (session()->has('success'))
+        <div class="mb-4 p-4 text-green-800 bg-green-200 border border-green-300 rounded">
+            {{ session('success') }}
+        </div>
+    @endif
 
     <form wire:submit.prevent="updateVehicle">
-        <div class="mb-4">
-            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
-            <input type="text" id="name" wire:model="name" class="mt-1 block w-full border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:border-blue-500 dark:focus:border-blue-400 focus:ring-blue-500">
-            @error('name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-        </div>
+        <div class="space-y-4">
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Vehicle Name</label>
+                <input type="text" id="name" wire:model="form.name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" required>
+                @error('form.name') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+            </div>
 
-        <div class="mb-4">
-            <label for="plate_number" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Plate Number</label>
-            <input type="text" id="plate_number" wire:model="plate_number" class="mt-1 block w-full border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:border-blue-500 dark:focus:border-blue-400 focus:ring-blue-500">
-            @error('plate_number') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-        </div>
+            <div>
+                <label for="plate_number" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Plate Number</label>
+                <input type="text" id="plate_number" wire:model="form.plate_number" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" required>
+                @error('form.plate_number') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+            </div>
 
-        <div class="mb-4">
-            <label for="type" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Type</label>
-            <input type="text" id="type" wire:model="type" class="mt-1 block w-full border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:border-blue-500 dark:focus:border-blue-400 focus:ring-blue-500">
-            @error('type') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-        </div>
+            <div>
+                <label for="type" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Vehicle Type</label>
+                <select id="type" wire:model="form.type" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" required>
+                    <option value="">Select Type</option>
+                    @foreach ($vehicleTypes as $type)
+                        <option value="{{ $type }}">{{ $type }}</option>
+                    @endforeach
+                </select>
+                @error('form.type') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+            </div>
 
-        <div class="mb-4">
-            <label for="rental_rate" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Rental Rate</label>
-            <input type="number" id="rental_rate" wire:model="rental_rate" step="0.01" class="mt-1 block w-full border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:border-blue-500 dark:focus:border-blue-400 focus:ring-blue-500">
-            @error('rental_rate') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-        </div>
+            <div>
+                <label for="rental_rate" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Rental Rate</label>
+                <input type="number" id="rental_rate" wire:model="form.rental_rate" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" required>
+                @error('form.rental_rate') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+            </div>
 
-        <div class="mb-4">
-            <label for="isAvailable" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Availability</label>
-            <select id="isAvailable" wire:model="isAvailable" class="mt-1 block w-full border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:border-blue-500 dark:focus:border-blue-400 focus:ring-blue-500">
-                <option value="1">Available</option>
-                <option value="0">Not Available</option>
-            </select>
-            @error('isAvailable') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-        </div>
+            <div>
+                <label for="isAvailable" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Availability</label>
+                <input type="checkbox" id="isAvailable" wire:model="form.isAvailable" class="mt-1">
+                @error('form.isAvailable') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+            </div>
 
-        <div class="mt-6">
-            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:ring focus:ring-blue-300">
-                Update Vehicle
-            </button>
+            <div class="mt-4">
+                <button type="submit" class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">Update Vehicle</button>
+            </div>
         </div>
     </form>
 </div>
